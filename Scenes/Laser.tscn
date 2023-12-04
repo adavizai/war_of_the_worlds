@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Laser Sprites/25.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Laser.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.0
+height = 18.0
+
+[node name="Laser" type="Area2D"]
+position = Vector2( 31, 1 )
+collision_layer = 8
+collision_mask = 5
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.415255, -2.73267 )
+rotation = 1.5708
+scale = Vector2( 0.135879, 0.190771 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0617027, -1.15207 )
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -0.0617065, 0.847927 )
+scale = Vector2( 0.2, 0.7 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
